@@ -1,4 +1,4 @@
-package dp.generater.pages;
+package dp.generatorapi.generators;
 
 public class Filter {
 
@@ -28,6 +28,10 @@ public class Filter {
         this.fromMonth = fromMonth;
         this.toMonth = toMonth;
         this.frequency = frequency;
+    }
+
+    public Filter(){
+
     }
 
     public String getFormat() {

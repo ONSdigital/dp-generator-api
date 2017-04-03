@@ -1,4 +1,4 @@
-package dp.generater.pages;
+package dp.generatorapi.pages;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -14,6 +14,8 @@ public class TimeserieValue {
 
     private String quarter;
 
+    private String month;
+
     private String sourceDataset;
 
     private String updateDate;
@@ -24,14 +26,6 @@ public class TimeserieValue {
 
     public void setDate(String data) {
         this.date = data;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setVaule(String vaule) {
-        this.value = vaule;
     }
 
     public String getYear() {
@@ -64,5 +58,21 @@ public class TimeserieValue {
 
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
 }

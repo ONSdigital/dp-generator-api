@@ -1,12 +1,12 @@
-package dp.generater;
+package dp.generatorapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GeneratorAPI {
+public class Application {
 
     public static void main(String args []) {
-        SpringApplication.run(GeneratorAPI.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }

@@ -1,4 +1,4 @@
-package dp.generater;
+package dp.generatorapi.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

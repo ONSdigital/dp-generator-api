@@ -1,16 +1,16 @@
-package dp.generater.controller;
+package dp.generatorapi.controller;
 
-import dp.generater.ONSPage;
-import dp.generater.PageRepository;
-import dp.generater.generators.GeneratorType;
-import dp.generater.generators.PageGeneratorFactory;
-import dp.generater.pages.Filter;
+import dp.generatorapi.Utils;
+import dp.generatorapi.repository.ONSPage;
+import dp.generatorapi.repository.PageRepository;
+import dp.generatorapi.generators.GeneratorType;
+import dp.generatorapi.generators.PageGeneratorFactory;
+import dp.generatorapi.generators.Filter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,12 +37,13 @@ public class Generator {
                                             @RequestParam(value="frequency", required = false) final String frequency
                             ) {
         final Filter filter = new Filter(format,fromYear, toYear, fromQuarter, toQuarter, fromMonth, toMonth, frequency);
-        final ONSPage page = pageRepository.findByUri(uri);
+        final ONSPage page = pageRepository.findByUri(uri + "?lang=en");
+        if (page == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         final GeneratorType generator = factory.get(page.getContent());
-        final String data =generator.convertPage(page.getContent(), filter);
-        final MultiValueMap headers = new LinkedMultiValueMap();
-        headers.add("Content-Disposition", "attachment; filename=data.csv");
-        headers.add("Content-Type", "text/csv");
-        return new ResponseEntity<String>(data, headers, HttpStatus.OK);
+        generator.addPage(page.getContent(), filter);
+        final MultiValueMap headers = Utils.getHeaders(format);
+        return new ResponseEntity<>(generator.convertPage(filter), headers, HttpStatus.OK);
     }
 }

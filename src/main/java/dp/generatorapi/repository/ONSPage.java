@@ -1,4 +1,4 @@
-package dp.generater;
+package dp.generatorapi.repository;
 
 import javax.persistence.*;
 

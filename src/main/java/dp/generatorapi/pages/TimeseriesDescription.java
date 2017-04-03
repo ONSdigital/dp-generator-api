@@ -1,4 +1,4 @@
-package dp.generater.pages;
+package dp.generatorapi.pages;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

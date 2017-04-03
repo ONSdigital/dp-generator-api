@@ -1,4 +1,4 @@
-package dp.generater.configuration;
+package dp.generatorapi.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
@@ -18,6 +18,12 @@ public class DefaultConfiguration {
     @Value("#{systemEnvironment['DB_ACCESS']?:'jdbc:postgresql://localhost/dp'}")
     private String url;
 
+    @Value("#{systemEnvironment['DB_USER']?:'dp'}")
+    private String user;
+
+    @Value("#{systemEnvironment['DB_PWD']?:'dp'}")
+    private String password;
+
     @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
         return (container -> {
@@ -31,7 +37,8 @@ public class DefaultConfiguration {
         return DataSourceBuilder
                 .create()
                 .driverClassName("org.postgresql.Driver")
-                .username("dp")
+                .username(user)
+                .password(password)
                 .url(url)
                 .build();
     }
