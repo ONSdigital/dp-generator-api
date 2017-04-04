@@ -21,23 +21,25 @@ public class Export {
     @Autowired
     private PageGeneratorFactory factory;
 
+    private final String language = "?lang=en";
+
     @RequestMapping(value = "/export", method = RequestMethod.POST)
     public ResponseEntity<String> generator(@ModelAttribute final ExportForm form) {
-            final Filter filter = new Filter();
-            GeneratorType generator = null;
-            filter.setFormat(form.getFormat());
-            for (String uri : form.getUri()) {
-                final ONSPage page = pageRepository.findByUri(uri + "?lang=en");
-                if (page == null) {
-                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-                }
-                if (generator == null) {
-                    generator = factory.get(page.getContent());
-                }
-                generator.addPage(page.getContent(), filter);
+        final Filter filter = new Filter();
+        GeneratorType generator = null;
+        filter.setFormat(form.getFormat());
+        for (String uri : form.getUrl()) {
+            final ONSPage page = pageRepository.findByUri(uri + language);
+            if (page == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            final MultiValueMap headers = Utils.getHeaders(form.getFormat());
-            return new ResponseEntity<>(generator.convertPage(filter), headers, HttpStatus.OK);
+            if (generator == null) {
+                generator = factory.get(page.getContent());
+            }
+            generator.addPage(page.getContent(), filter);
+        }
+        final MultiValueMap headers = Utils.getHeaders(form.getFormat());
+        return new ResponseEntity<>(generator.convertPage(filter), headers, HttpStatus.OK);
     }
 
 }

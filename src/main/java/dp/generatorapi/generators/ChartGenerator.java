@@ -17,11 +17,11 @@ public class ChartGenerator implements GeneratorType {
 
     @Override
     public String convertPage(final Filter filter) {
-            if (filter.getFormat().equals("csv")) {
-                return Grid.gridToCsv(grid);
-            } else {
-                return Grid.gridToXLS(grid);
-            }
+        if (filter.getFormat().equals("csv")) {
+            return Grid.gridToCsv(grid);
+        } else {
+            return Grid.gridToXLS(grid);
+        }
     }
 
     public void addPage(final String content, final Filter filter) {

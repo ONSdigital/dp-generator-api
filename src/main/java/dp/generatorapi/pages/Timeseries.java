@@ -17,7 +17,6 @@ public class Timeseries {
 
     private String notes;
 
-
     public List<TimeserieValue> getMonths() {
         return months;
     }

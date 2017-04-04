@@ -17,7 +17,7 @@ public class ChartGeneratorTest {
 
     @Before
     public void setup() {
-        try (InputStream file = ChartGeneratorTest.class.getResourceAsStream("chart.json")){
+        try (InputStream file = ChartGeneratorTest.class.getResourceAsStream("chart.json")) {
             testdata = IOUtils.toString(file);
         } catch (IOException e) {
             throw new RuntimeException(e);

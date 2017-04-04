@@ -16,8 +16,8 @@ public class TimeseriesGeneratorTest {
     private String testdata;
 
     @Before
-    public void setup(){
-        try (InputStream file = TimeseriesGeneratorTest.class.getResourceAsStream("timeseries.json")){
+    public void setup() {
+        try (InputStream file = TimeseriesGeneratorTest.class.getResourceAsStream("timeseries.json")) {
             testdata = IOUtils.toString(file);
         } catch (IOException e) {
             throw new RuntimeException(e);

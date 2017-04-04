@@ -25,19 +25,21 @@ public class Generator {
     @Autowired
     private PageGeneratorFactory factory;
 
+    private final String language = "?lang=en";
+
     @RequestMapping("/generator")
-    public ResponseEntity<String> generator(@RequestParam(value="uri") final String uri,
-                                            @RequestParam(value="format") final String format,
-                                            @RequestParam(value="fromYear", required = false) final String fromYear,
-                                            @RequestParam(value="toYear", required = false) final String toYear,
-                                            @RequestParam(value="fromQuarter" ,required = false) final String fromQuarter,
-                                            @RequestParam(value="toQuarter", required = false) final String toQuarter,
-                                            @RequestParam(value="fromMonth", required = false) final String fromMonth,
-                                            @RequestParam(value="toMonth", required = false) final String toMonth,
-                                            @RequestParam(value="frequency", required = false) final String frequency
-                            ) {
-        final Filter filter = new Filter(format,fromYear, toYear, fromQuarter, toQuarter, fromMonth, toMonth, frequency);
-        final ONSPage page = pageRepository.findByUri(uri + "?lang=en");
+    public ResponseEntity<String> generator(@RequestParam(value = "uri") final String uri,
+                                            @RequestParam(value = "format") final String format,
+                                            @RequestParam(value = "fromYear", required = false) final String fromYear,
+                                            @RequestParam(value = "toYear", required = false) final String toYear,
+                                            @RequestParam(value = "fromQuarter", required = false) final String fromQuarter,
+                                            @RequestParam(value = "toQuarter", required = false) final String toQuarter,
+                                            @RequestParam(value = "fromMonth", required = false) final String fromMonth,
+                                            @RequestParam(value = "toMonth", required = false) final String toMonth,
+                                            @RequestParam(value = "frequency", required = false) final String frequency
+    ) {
+        final Filter filter = new Filter(format, fromYear, toYear, fromQuarter, toQuarter, fromMonth, toMonth, frequency);
+        final ONSPage page = pageRepository.findByUri(uri + language);
         if (page == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

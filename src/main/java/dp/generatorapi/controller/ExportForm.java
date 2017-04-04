@@ -6,7 +6,7 @@ public class ExportForm {
 
     private String format;
 
-    private List<String> uri;
+    private List<String> url;
 
     public String getFormat() {
         return format;
@@ -16,11 +16,11 @@ public class ExportForm {
         this.format = format;
     }
 
-    public List<String> getUri() {
-        return uri;
+    public List<String> getUrl() {
+        return url;
     }
 
-    public void setUri(List<String> uri) {
-        this.uri = uri;
+    public void setUrl(List<String> url) {
+        this.url = url;
     }
 }

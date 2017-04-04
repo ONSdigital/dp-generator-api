@@ -30,7 +30,7 @@ public class Filter {
         this.frequency = frequency;
     }
 
-    public Filter(){
+    public Filter() {
 
     }
 

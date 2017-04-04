@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class ONSPage {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     private String collection_id;
@@ -23,7 +23,7 @@ public class ONSPage {
         this.content = content;
     }
 
-    public ONSPage(){
+    public ONSPage() {
 
     }
 

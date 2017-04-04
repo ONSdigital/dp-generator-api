@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PageGeneratorFactoryTest {
 
-    private PageGeneratorFactory factory  = new PageGeneratorFactory();
+    private PageGeneratorFactory factory = new PageGeneratorFactory();
 
     @Test
     public void checkPageGenerator() {
