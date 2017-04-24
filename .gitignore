@@ -1,3 +1,5 @@
 .idea/*
 .DS_STORE
 target/*
+dp-generator-api.nomad
+dp-generator-api.nomad.bak
