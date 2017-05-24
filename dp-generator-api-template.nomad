@@ -10,11 +10,6 @@ job "dp-generator-api" {
     task "dp-generator-api" {
       artifact {
         source = "s3::S3_TAR_FILE"
-        // The Following options are needed if no IAM roles are provided
-        // options {
-        // aws_access_key_id = ""
-        // aws_access_key_secret = ""
-        // }
       }
       env {
         DB_ACCESS = "DB_ACCESS_URL"
@@ -36,6 +31,17 @@ job "dp-generator-api" {
             static = "GENERATOR_PORT"
           }
         }
+      }
+      service {
+        port = "${NOMAD_PORT_http}"
+        check {
+          type = "http"
+          path = "/health"
+          interval = "10s"
+          timeout = "2s"
+>>>>>>> HTTP Health check
+        }
+
       }
     }
   }

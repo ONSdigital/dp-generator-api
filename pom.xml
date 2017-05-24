@@ -20,6 +20,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
@@ -33,9 +37,9 @@
             <version>9.4-1200-jdbc4</version>
             <exclusions>
                 <exclusion>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>slf4j-api</artifactId>
-               </exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-simple</artifactId>
@@ -53,10 +57,10 @@
             <version>3.9</version>
         </dependency>
         <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>1.3.2</version>
-    </dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
