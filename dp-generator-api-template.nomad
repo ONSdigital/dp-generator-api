@@ -20,7 +20,7 @@ job "dp-generator-api" {
         DB_ACCESS = "DB_ACCESS_URL"
         DB_USER = "USER"
         DB_PW = "PASSWORD"
-        PORT = "${NOMAD_PORT_http}"
+        PORT = "GENERATOR_PORT"
         HUMAN_LOG = "HUMAN_LOG_FLAG"
       }
       driver = "java"
@@ -32,9 +32,11 @@ job "dp-generator-api" {
         cpu = 600
         memory = 600
         network {
-          port "http" {}
-        }
+          port "http" {
+            static = "GENERATOR_PORT"
+          }
         }
       }
     }
+  }
 }
