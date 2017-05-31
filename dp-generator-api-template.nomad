@@ -21,6 +21,7 @@ job "dp-generator-api" {
         DB_USER = "USER"
         DB_PW = "PASSWORD"
         PORT = "${NOMAD_PORT_http}"
+        HUMAN_LOG = "HUMAN_LOG_FLAG"
       }
       driver = "java"
       config {
