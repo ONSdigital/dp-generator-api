@@ -39,7 +39,6 @@ job "dp-generator-api" {
           path = "/health"
           interval = "10s"
           timeout = "2s"
->>>>>>> HTTP Health check
         }
 
       }
