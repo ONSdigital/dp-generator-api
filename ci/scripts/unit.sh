@@ -1,7 +1,5 @@
 #!/bin/bash -eux
 
-export GOPATH=$(pwd)/go
-
 pushd dp-generator-api
-  make test
+  mvn test
 popd

@@ -1,9 +1,5 @@
 #!/bin/bash -eux
 
-cwd=$(pwd)
-
-export GOPATH=$cwd/go
-
 pushd dp-generator-api
-  make build && mv build/bin/* $cwd/build
+  mvn -Dmaven.test.skip=true package && mv target/dp-generator-api-*.jar ../build
 popd
