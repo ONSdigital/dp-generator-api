@@ -1,13 +1,13 @@
 MAIN=dp-generator-api
+SHELL=bash
 
 BUILD?=build
+S3_REGION?=eu-west-1
 
-NOMAD?=
 NOMAD_SRC_DIR?=nomad
 NOMAD_PLAN_TARGET?=$(BUILD)
 NOMAD_PLAN=$(NOMAD_PLAN_TARGET)/$(MAIN).nomad
 
-DATA_CENTER?=dc1
 PORT?=8092
 
 thisOS:=$(shell uname -s)
@@ -18,10 +18,17 @@ SED?=sed
 endif
 
 ifdef DEV
+NOMAD?=
 HUMAN_LOG?=1
+DATA_CENTER?=dc1
 else
 HUMAN_LOG?=
+NOMAD?=1
+DATA_CENTER?=$(S3_REGION)
 endif
+
+build:
+	mvn package
 
 run:
 ifdef NOMAD
@@ -44,4 +51,4 @@ nomad:
 		-e 's,^(  *driver  *=  *)"exec",\1"'$$driver'",' \
 			< $(MAIN)-template.nomad > $(NOMAD_PLAN)
 
-.PHONY: nomad
+.PHONY: nomad build
